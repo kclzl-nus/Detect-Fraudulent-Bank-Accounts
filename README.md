@@ -1,7 +1,7 @@
 DSA4212 Group Project
 ==============================
 
-Detecting fraudent t bank accounts and gain insights into characteristics of these fraudent accounts and generate actionable insights to detect and prevent these kind of fraud.
+Detecting fraudulent bank accounts and gain insights into characteristics of these fraudent accounts and generate actionable insights to detect and prevent these kind of fraud.
 
 Project Organization
 ------------
