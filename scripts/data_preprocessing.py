@@ -50,9 +50,15 @@ def data_preprocessing():
     data['fraud_bool'] = data['fraud_bool'].astype('category')
     data['payment_type'] = data['payment_type'].astype('category')
     data['employment_status'] = data['employment_status'].astype('category')
+    data['email_is_free'] = data['email_is_free'].astype('uint8')
     data['housing_status'] = data['housing_status'].astype('category')
+    data['phone_home_valid'] = data['phone_home_valid'].astype('uint8')
+    data['phone_mobile_valid'] = data['phone_mobile_valid'].astype('uint8')
+    data['has_other_cards'] = data['has_other_cards'].astype('uint8')
+    data['foreign_request'] = data['foreign_request'].astype('uint8')
     data['source'] = data['source'].astype('category')
     data['device_os'] = data['device_os'].astype('category')
+
 
     # Remove Redundant rows
     data.drop(columns=['device_fraud_count'], inplace=True)
