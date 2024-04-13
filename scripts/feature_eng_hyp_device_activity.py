@@ -14,29 +14,22 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.utils import resample
 from sklearn.model_selection import train_test_split
 
-def generateDeviceActivityFeatures():
-    # generate data
-    data_preprocessing.data_preprocessing()
-
-    # import data
-    X_train = pd.read_csv("../data/processed/X_train.csv")
-    y_train = pd.read_csv("../data/processed/y_train.csv")
-    data = pd.concat([y_train, X_train], axis=1)
+def generateDeviceActivityFeatures(data):
 
     # count fraud and non-fraud
     total_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[1, "count"]
     total_non_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[0, "count"]
 
     # helper function to extract fraud proportion for feature engineering
-    def getFraudInfo(group):
-        # get total count of fraud within this group
-        fraud_count = group['fraud_bool'].value_counts().to_frame().loc[1, "count"]
-        total_count = group.shape[0]
-        fraud_proportion = round(fraud_count / total_count, 4)
+    # def getFraudInfo(group):
+    #     # get total count of fraud within this group
+    #     fraud_count = group['fraud_bool'].value_counts().to_frame().loc[1, "count"]
+    #     total_count = group.shape[0]
+    #     fraud_proportion = round(fraud_count / total_count, 4)
 
-        group['num_fraud'] = fraud_count
-        group['proportion_of_fraud_in_group'] = fraud_proportion
-        return group[['num_fraud', 'proportion_of_fraud_in_group']].drop_duplicates()
+    #     group['num_fraud'] = fraud_count
+    #     group['proportion_of_fraud_in_group'] = fraud_proportion
+    #     return group[['num_fraud', 'proportion_of_fraud_in_group']].drop_duplicates()
 
     #############
     # Feature 1 #
@@ -58,9 +51,6 @@ def generateDeviceActivityFeatures():
 
     # change 'FE_01' to category
     data['FE_01'] = data['FE_01'].astype('category')
-
-    # assign proability of fraud based on label, so if data['FE_01'] labelled 'A', then assign corresponding probability of fraud
-    FE_01_prob = data.groupby(['FE_01']).apply(getFraudInfo).reset_index()[['FE_01', 'proportion_of_fraud_in_group']]
 
     FE_01_prob_mapping = {"A": 0.6047,
                         "B": 0.4529,
@@ -201,7 +191,4 @@ def generateDeviceActivityFeatures():
 
     print("Features for Device Activity Hypothesis generated.")
 
-    # Save files in ../data/processed/ as device_activity_features.csv
-    data.to_csv("../data/processed/device_activity_features.csv", index=False)
-
-#generateDeviceActivityFeatures()
+    return data
