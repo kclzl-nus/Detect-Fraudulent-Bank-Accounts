@@ -39,6 +39,8 @@ def data_preprocessing():
                 zip_ref.extractall('../data/raw/')
 
         print("Base.csv downloaded and extracted successfully. Data saved to 'data/raw/Base.csv'.")
+    else:
+        print("Base.csv already present.")
 
 
     print("Data Preprocessing...")
