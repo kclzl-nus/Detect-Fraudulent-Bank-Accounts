@@ -200,3 +200,6 @@ def generateDeviceActivityFeatures():
     data['FE_04_device_os_foreign_request_prob'] = data['FE_04_device_os_foreign_request_prob'].astype('float')
 
     print("Features for Device Activity Hypothesis generated.")
+
+    # Save files in ../data/processed/ as device_activity_features.csv
+    data.to_csv("../data/processed/device_activity_features.csv", index=False)
