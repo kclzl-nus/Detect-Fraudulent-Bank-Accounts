@@ -203,3 +203,5 @@ def generateDeviceActivityFeatures():
 
     # Save files in ../data/processed/ as device_activity_features.csv
     data.to_csv("../data/processed/device_activity_features.csv", index=False)
+
+generateDeviceActivityFeatures()
