@@ -110,14 +110,14 @@ def generateDeviceActivityFeatures(data):
     # concatenate all the group
     data = pd.concat([group01, group02, group03, group04])
 
-    # change 'FE_02' to category
+    # change 'FE_03' to category
     data['FE_03'] = data['FE_03'].astype('category')
 
     # generate mapping
     FE_03_prob_mappping = {"A": 0.1627,
                         "B": 0.2782,
                         "C": 0.2448,
-                        "D": 0.5000
+                        "D": 0.18
                         }
 
     # map the probability of fraud to the device_acitivtiy_df, as a new column
@@ -188,3 +188,14 @@ def generateDeviceActivityFeatures(data):
     print("Features for Device Activity Hypothesis generated.")
 
     return data
+
+# # test code
+# X_train = pd.read_csv("../data/processed/X_train.csv")
+# y_train = pd.read_csv("../data/processed/y_train.csv")
+# data = pd.concat([y_train, X_train], axis=1)
+# print(pd.concat([y_train, X_train], axis=1)['fraud_bool'].value_counts().to_frame().loc[1:, "count"])
+# data = generateDeviceActivityFeatures(data)
+
+# # check shape and head
+# print(data.shape)
+# print(data.head())
