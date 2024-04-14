@@ -10,12 +10,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
 from sklearn.utils import resample
 from sklearn.model_selection import train_test_split
+import warnings
+warnings.filterwarnings('ignore')
 
 def generateDeviceActivityFeatures(data):
 
     # count fraud and non-fraud
-    total_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[1, "count"]
-    total_non_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[0, "count"]
+    # total_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[1, "count"]
+    # total_non_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[0, "count"]
 
     # helper function to extract fraud proportion for feature engineering
     # def getFraudInfo(group):
@@ -130,37 +132,7 @@ def generateDeviceActivityFeatures(data):
     # Feature 4 #
     #############
 
-    group01 = data[(data['device_os'] == "windows") & (data['foreign_request'] == 0)]
-    group02 = data[(data['device_os'] == "windows") & (data['foreign_request'] == 1)]
-    group03 = data[(data['device_os'] == "macintosh") & (data['foreign_request'] == 0)]
-    group04 = data[~data.index.isin(group01.index) & ~data.index.isin(group02.index) & ~data.index.isin(group03.index)]
-
-    # label each group from "A" to "D", label_name = "FE_04"
-    group01['FE_04'] = "A"; group02['FE_04'] = "B"; group03['FE_04'] = "C"; group04['FE_04'] = "D"
-
-    # concatenate all the group
-    data = pd.concat([group01, group02, group03, group04])
-
-    # change 'FE_04' to category
-    data['FE_04'] = data['FE_04'].astype('category')
-
-    # generate mapping
-    FE_04_prob_mappping = {"A": 0.3027,
-                        "B": 0.4605,
-                        "C": 0.2010,
-                        "D": 0.0916
-                        }
-
-    # map the probability of fraud to the device_acitivtiy_df, as a new column 
-    data['FE_04_device_os_foreign_request_prob'] = data['FE_04'].map(FE_04_prob_mappping)
-
-    print('Feature 4 created.')
-
-    #############
-    # Feature 5 #
-    #############
-
-    FE_05_prob_mappping = {"windows": 0.3083,
+    FE_04_prob_mappping = {"windows": 0.3083,
                         "macintosh": 0.2041,
                         "linux": 0.0001,
                         "other": 0.0001,
@@ -168,29 +140,29 @@ def generateDeviceActivityFeatures(data):
                         }
 
     # map the probability of fraud to the device_acitivtiy_df, as a new column
-    data['FE_05_device_os_prob'] = data['device_os'].map(FE_05_prob_mappping)
+    data['FE_04_device_os_prob'] = data['device_os'].map(FE_04_prob_mappping)
 
-    print('Feature 5 created.')
+    print('Feature 4 created.')
 
 
     ###########
     # Tidy Up #
     ###########
 
-    # drop labelled columns 'FE_01' to 'FE_05'
-    data.drop(columns=['FE_01','FE_02','FE_03','FE_04'], inplace=True)
+    # drop labelled columns 'FE_01' to 'FE_04'
+    data.drop(columns=['FE_01','FE_02','FE_03'], inplace=True)
 
     # change all other feature engineered columns to float instead of category
     data['FE_01_device_os_emails_prob'] = data['FE_01_device_os_emails_prob'].astype('float')
     data['FE_02_keep_alive_device_emails_prob'] = data['FE_02_keep_alive_device_emails_prob'].astype('float')
     data['FE_03_source_foreign_request_prob'] = data['FE_03_source_foreign_request_prob'].astype('float')
-    data['FE_04_device_os_foreign_request_prob'] = data['FE_04_device_os_foreign_request_prob'].astype('float')
+    data['FE_04_device_os_prob'] = data['FE_04_device_os_prob'].astype('float')
 
     print("Features for Device Activity Hypothesis generated.")
 
     return data
 
-# # test code
+# # uncomment to test code
 # X_train = pd.read_csv("../data/processed/X_train.csv")
 # y_train = pd.read_csv("../data/processed/y_train.csv")
 # data = pd.concat([y_train, X_train], axis=1)
