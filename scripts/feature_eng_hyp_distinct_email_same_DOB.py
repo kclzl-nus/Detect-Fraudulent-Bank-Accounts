@@ -6,11 +6,10 @@
 
 import pandas as pd
 
-def bin_distinct_emails_same_DOB(file_path):
-    df = pd.read_csv(file_path)
+def bin_distinct_emails_same_DOB(df):
 
     # specify the bin edges
-    bin_edges = [0, 10, 20, 30, 50]
+    bin_edges = [-10, 10, 20, 30, 50]
 
     # define bin labels
     bin_labels = ['0-10', '10-20', '20-30', '>30']
