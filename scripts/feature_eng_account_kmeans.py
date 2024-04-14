@@ -96,7 +96,7 @@ def get_account_related_and_kmeans_feature(df):
 
     # kmeans model labelling
 
-    kmeans_model = pickle.load(open('../data/processed/kmeans_model.pkl', 'rb'))
+    kmeans_model = pickle.load(open('../models/kmeans_model.pkl', 'rb'))
 
     categorical_features = [
             'payment_type',

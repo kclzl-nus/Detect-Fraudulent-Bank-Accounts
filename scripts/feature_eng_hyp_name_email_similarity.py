@@ -6,9 +6,7 @@
 
 import pandas as pd
 
-def bin_name_email_similarity(file_path):
-    df = pd.read_csv(file_path)
-
+def bin_name_email_similarity(df):
     # specify the bin edges
     bin_edges = [0, 0.2, 0.4, 0.6, 0.8, 1]
 
