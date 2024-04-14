@@ -1,6 +1,3 @@
-# import data_preprocessing.py from the same folder
-import data_preprocessing
-
 # import other libraries
 # import libraries
 import numpy as np
