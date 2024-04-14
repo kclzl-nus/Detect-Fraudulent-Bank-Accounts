@@ -6,8 +6,7 @@
 
 import pandas as pd
 
-def bin_session_length(file_path):
-    df = pd.read_csv(file_path)
+def bin_session_length(df):
 
     # specify the bin edges
     bin_edges = [-10, 0, 20, 40, 60, 80, 100, 300]
