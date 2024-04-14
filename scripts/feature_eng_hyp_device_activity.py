@@ -15,10 +15,9 @@ warnings.filterwarnings('ignore')
 
 def generateDeviceActivityFeatures(data):
 
-    # count fraud and non-fraud
-    # total_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[1, "count"]
-    # total_non_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[0, "count"]
-
+    # # count fraud and non-fraud
+    # # total_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[1, "count"]
+    # # total_non_fraud_count = data['fraud_bool'].value_counts().to_frame().loc[0, "count"]
     # helper function to extract fraud proportion for feature engineering
     # def getFraudInfo(group):
     #     # get total count of fraud within this group
