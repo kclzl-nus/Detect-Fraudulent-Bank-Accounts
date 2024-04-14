@@ -216,7 +216,7 @@ def get_account_related_and_kmeans_feature(df):
                 0.066630107
                 ]
     df_cluster['kmeans_prob'] = np.select(condition_list, prob_list, 0)
-    df = pd.concat([df, df_cluster[['kmeans_prob']]])
+    df = pd.concat([df, df_cluster[['kmeans_prob']]], axis=1)
     
     return df
     
