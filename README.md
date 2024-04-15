@@ -1,7 +1,50 @@
-DSA4212 Group Project
-==============================
+# DSA4263 Group Project
+Detecting fraudulent bank accounts and gaining insights into characteristics of these fraudulent accounts and generate actionable insights to detect and prevent these kind of fraud.
 
-Detecting fraudent t bank accounts and gain insights into characteristics of these fraudent accounts and generate actionable insights to detect and prevent these kind of fraud.
+
+## About the Project
+### Data
+
+### Methods
+
+## Getting started
+First, clone the repo:
+```
+git clone https://github.com/kclzl-nus/Detect-Fraudulent-Bank-Accounts.git
+```
+<br/>
+
+Then inside the top-level directory of the repo, run 
+```
+pip install .
+```
+to allow imports from other python scripts.
+
+<br/>
+Next, is to setup your KaggleAPI Token:
+
+1. Navigate to https://www.kaggle.com/ and log into your account.
+2. In Kaggle, navigate to 'Your Profile' > 'Settings' > 'Account' tab > 'API' section and select 'Create New Token'. This will trigger the download of `kaggle.json`, a file containing your API credentials.
+3. Move the `kaggle.json` file into the appropriate folder:
+    + Windows: `C:\Users\<Windows-username>\.kaggle\kaggle.json`
+    + Mac, Linux, OSX, and other UNIX-based OS: `~/.kaggle/kaggle.json`
+<br/>
+
+Now you are all ready to explore the project:
++ `notebooks/main.ipynb`: Notebook for project skeleton
++ `1.0-data-preprocessing.ipynb`
++ `2.0-exploratory-data-analysis.ipynb`
++ Hypothesis & Feature Engineering:
+    + `3.0-hypothesis-device-activity.ipynb`
+    + `3.1-hypothesis-name-email-similarity.ipynb`
+    + `3.2-hypothesis-session-length.ipynb`
+    + `3.3-hypothesis-clustering.ipynb`
+    + `3.4-hypothesis-income-credit-limit-ratio.ipynb`
+    + `3.5-hypothesis-bank-integration.ipynb`
++ Models:
+    + `4.0-baseline-model.ipynb`
+    + `4.1-challenger-model.ipynb`
+
 
 Project Organization
 ------------
