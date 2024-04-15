@@ -1,5 +1,12 @@
 # local package
 -e .
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+seaborn
+jupyter
 
 # external requirements
 click
