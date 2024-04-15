@@ -59,7 +59,7 @@ def generateDeviceActivityFeatures(data):
     # map the probability of fraud to the device_acitivtiy_df, as a new column 'FE_01_device_os_emails_prob'
     data['FE_01_device_os_emails_prob'] = data['FE_01'].map(FE_01_prob_mapping)
 
-    print("Feature 1 created.")
+    #print("Feature 1 created.")
 
 
     #############
@@ -94,7 +94,7 @@ def generateDeviceActivityFeatures(data):
     # map the probability of fraud to the device_acitivtiy_df, as a new column 'FE_01_device_os_emails_prob'
     data['FE_02_keep_alive_device_emails_prob'] = data['FE_02'].map(FE_02_prob_mappping)
 
-    print("Feature 1 created.")
+    #print("Feature 1 created.")
 
     #############
     # Feature 3 #
@@ -125,7 +125,7 @@ def generateDeviceActivityFeatures(data):
     # map the probability of fraud to the device_acitivtiy_df, as a new column
     data['FE_03_source_foreign_request_prob'] = data['FE_03'].map(FE_03_prob_mappping)
 
-    print('Feature 3 created.')
+    #print('Feature 3 created.')
 
     #############
     # Feature 4 #
@@ -141,7 +141,7 @@ def generateDeviceActivityFeatures(data):
     # map the probability of fraud to the device_acitivtiy_df, as a new column
     data['FE_04_device_os_prob'] = data['device_os'].map(FE_04_prob_mappping)
 
-    print('Feature 4 created.')
+    #print('Feature 4 created.')
 
 
     ###########
@@ -157,7 +157,7 @@ def generateDeviceActivityFeatures(data):
     data['FE_03_source_foreign_request_prob'] = data['FE_03_source_foreign_request_prob'].astype('float')
     data['FE_04_device_os_prob'] = data['FE_04_device_os_prob'].astype('float')
 
-    print("Features for Device Activity Hypothesis generated.")
+    #print("Features for Device Activity Hypothesis generated.")
 
     return data
 
