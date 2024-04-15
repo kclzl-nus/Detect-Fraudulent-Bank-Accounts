@@ -44,22 +44,15 @@ def data_preprocessing():
 
     print("Data Preprocessing...")
 
-    # Data Preprocess
+    # Data Preprocessing
+
+    # Load dataset
     data = pd.read_csv('../data/raw/Base.csv')
-
-    # Convert the variables to the appropriate data types
-    data['fraud_bool'] = data['fraud_bool'].astype('category')
-    data['payment_type'] = data['payment_type'].astype('category')
-    data['employment_status'] = data['employment_status'].astype('category')
-    data['housing_status'] = data['housing_status'].astype('category')
-    data['source'] = data['source'].astype('category')
-    data['device_os'] = data['device_os'].astype('category')
-
 
     # Remove Redundant rows
     data.drop(columns=['device_fraud_count'], inplace=True)
 
-    # Data Cleaning
+    # Handle missing values
     data['intended_balcon_amount'] = data['intended_balcon_amount'].apply(lambda x: -1 if x < 0 else x)
     data = data[(data['current_address_months_count'] >= 0) & (data['session_length_in_minutes'] >= 0) & (data['device_distinct_emails_8w'] >= 0)]
 
