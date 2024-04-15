@@ -3,9 +3,12 @@ Detecting fraudulent bank accounts and gaining insights into characteristics of 
 
 
 ## About the Project
-### Data
+### Abstract
 
-### Methods
+### Data
+This project uses the Bank Account Fraud (BAF) Dataset Suit from Kaggle. For more information:
++ Kaggle:  https://www.kaggle.com/datasets/sgpjesus/bank-account-fraud-dataset-neurips-2022?select=Base.csv
++ Datasheet: https://github.com/feedzai/bank-account-fraud/blob/main/documents/datasheet.pdf
 
 ## Getting started
 First, clone the repo:
@@ -16,7 +19,7 @@ git clone https://github.com/kclzl-nus/Detect-Fraudulent-Bank-Accounts.git
 
 Then inside the top-level directory of the repo, run 
 ```
-pip install .
+pip install -r requirements.txt
 ```
 to allow imports from other python scripts.
 
